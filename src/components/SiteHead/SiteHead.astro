@@ -1,0 +1,70 @@
+---
+import Logo from "@/assets/svg/logo.svg";
+import { getCurrentLocale } from "@/utils/helpers/languageSwitcher.ts";
+import { locales } from "@/utils/dato/i18n.js";
+
+// Get current locale
+const currentLocale = getCurrentLocale(Astro.url.pathname);
+
+interface AlternateLink {
+  locale: string;
+  url: string;
+}
+
+// Get props that might be passed from the page
+interface Props {
+  alternateLinks?: AlternateLink[];
+}
+
+const { alternateLinks } = Astro.props;
+---
+
+<header class="site-head | bg-black text-white py-m">
+  <div class="wrapper">
+    <a href={`/${currentLocale}/`} class="logo"><Logo /></a>
+    <div class="cluster">
+      <nav class="language-switcher">
+        {
+          alternateLinks ? (
+            // Use provided alternate links
+            <>
+              {/* <span class="current-lang">
+                {getLanguageLabel(currentLocale)}
+              </span> */}
+              {alternateLinks.map((link) => (
+                <a
+                  href={link.url}
+                  class="lang-link"
+                  title={`Switch to ${link.locale}`}
+                >
+                  {link.locale}
+                </a>
+              ))}
+            </>
+          ) : (
+            // Fallback: link to homepage in other languages
+            locales
+              .filter((locale) => locale !== currentLocale)
+              .map((locale) => (
+                <a
+                  href={`/${locale}/`}
+                  class="lang-link"
+                  title={`Switch to ${locale}`}
+                >
+                  {locale}
+                </a>
+              ))
+          )
+        }
+      </nav>
+    </div>
+  </div>
+</header>
+
+<style>
+  @import "./SiteHead.css";
+</style>
+
+<script>
+  import "./SiteHead.js";
+</script>

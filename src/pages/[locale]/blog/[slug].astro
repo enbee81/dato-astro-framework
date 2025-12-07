@@ -1,0 +1,128 @@
+---
+import { LIVE_PREVIEW } from "astro:env/client";
+import { DATOCMS_API_KEY } from "astro:env/server";
+
+import DatoPicture from "@/components/dato/DatoPicture/DatoPicture.astro";
+import StructuredTextBlock from "@/components/dato/StructuredTextBlock/StructuredTextBlock.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+import { fetchDatoForAllLocales } from "@/utils/dato/index";
+import { taggedDatoRequest } from "@/utils/dato/datoRequest";
+import { BLOG_POSTS_QUERY } from "@/utils/dato/queries/blogPosts";
+import { BLOG_POST_QUERY } from "@/utils/dato/queries/blogPost";
+import { QueryListener } from "@datocms/astro/QueryListener";
+import { altLinksFromSlugs } from "@/utils/helpers/alternateLinks";
+
+export async function getStaticPaths() {
+  const allBlogPosts = await fetchDatoForAllLocales(
+    BLOG_POSTS_QUERY,
+    "allBlogPosts"
+  );
+
+  return allBlogPosts.map((post) => {
+    // Generate alternate links using _allSlugLocales data
+    const alternateLinks = altLinksFromSlugs(
+      post._allSlugLocales,
+      post.locale,
+      (locale, slug) => `/${locale}/blog/${slug}`
+    );
+
+    return {
+      params: {
+        locale: post.locale,
+        slug: post.slug,
+      },
+      props: {
+        staticPost: post,
+        alternateLinks,
+      },
+    };
+  });
+}
+const { staticPost, alternateLinks } = Astro.props;
+
+let post;
+let finalAlternateLinks;
+
+if (LIVE_PREVIEW) {
+  // In preview mode, fetch the blog post based on the slug and locale from the URL
+  const { blogPost } = await taggedDatoRequest(BLOG_POST_QUERY, {
+    slug: Astro.params["slug"],
+    locale: Astro.params["locale"],
+  });
+
+  if (!blogPost) {
+    return Astro.redirect("/404");
+  }
+
+  post = blogPost;
+
+  // Generate alternate links for live preview mode using _allSlugLocales
+  finalAlternateLinks = altLinksFromSlugs(
+    post._allSlugLocales || [],
+    post.locale,
+    (locale, slug) => `/${locale}/blog/${slug}`
+  );
+} else {
+  post = staticPost;
+  finalAlternateLinks = alternateLinks;
+}
+
+const seo = post._seoMetaTags;
+
+function formatDate(dateString: string) {
+  const date = new Date(dateString);
+  return date.toLocaleDateString("en-US", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+}
+---
+
+<BaseLayout seo={seo} alternateLinks={finalAlternateLinks}>
+  {
+    post.heroImage && (
+      <DatoPicture
+        image={post.heroImage}
+        widths={[800, 1200, 2400]}
+        ratio={5 / 2}
+        sizes="100vw"
+        priority
+        style={`view-transition-name: post-image-${post.id}; view-transition-class: blog-image;`}
+      />
+    )
+  }
+  <div class="wrapper stack-xl py-2xl text-step-0" style="--wrapper-max: 60ch;">
+    <div class="stack-xs">
+      <p>
+        <a
+          href={`/${post.locale}/blog`}
+          class="text-step--1 weight-bold text-dark-pink">← All Posts</a
+        >
+      </p>
+      {
+        post.date && (
+          <time class="text-step-1" datetime={post.date}>
+            {formatDate(post.date)}
+          </time>
+        )
+      }
+      <h1 class="text-step-4 leading-tight" }>
+        {post.title}
+      </h1>
+    </div>
+    <div>
+      <StructuredTextBlock block={post.content} />
+    </div>
+  </div>
+  {
+    LIVE_PREVIEW && (
+      <QueryListener
+        query={BLOG_POSTS_QUERY}
+        token={DATOCMS_API_KEY}
+        includeDrafts={true}
+      />
+    )
+  }
+</BaseLayout>

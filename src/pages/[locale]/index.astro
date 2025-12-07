@@ -1,0 +1,87 @@
+---
+export const prerender = true;
+
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Gallery from "@/components/dato/Gallery/Gallery.astro";
+
+import { fetchDatoForAllLocales } from "@/utils/dato/index";
+import { taggedDatoRequest } from "@/utils/dato/datoRequest";
+import { HOMEPAGE_QUERY } from "@/utils/dato/queries/homepage";
+import { BLOG_POSTS_QUERY } from "@/utils/dato/queries/blogPosts";
+import { VARIABLE_PAGES_QUERY } from "@/utils/dato/queries/variablePages";
+
+import { getItemPath } from "@/utils/helpers/getItemPath";
+import { generateAltLinksForLocale } from "@/utils/helpers/alternateLinks";
+
+export async function getStaticPaths() {
+  // Fetch homepage data for all locales
+  const homepageLocales = await fetchDatoForAllLocales(
+    HOMEPAGE_QUERY,
+    "homepage"
+  );
+
+  if (!homepageLocales || homepageLocales.length === 0) {
+    console.error("No homepage data found for any locale");
+    return [];
+  }
+
+  return homepageLocales.map((homepage) => {
+    // Generate alternate links for other locales
+    const alternateLinks = generateAltLinksForLocale(
+      homepage.locale,
+      (locale) => `/${locale}/`
+    );
+
+    return {
+      params: { locale: homepage.locale },
+      props: { homepage, alternateLinks },
+    };
+  });
+}
+
+const { homepage, alternateLinks } = Astro.props;
+const locale = Astro.params.locale;
+
+// Fetch data for the current locale only
+const { allBlogPosts = [] } = await taggedDatoRequest(BLOG_POSTS_QUERY, {
+  locale,
+});
+const { allVariablePages = [] } = await taggedDatoRequest(
+  VARIABLE_PAGES_QUERY,
+  {
+    locale,
+  }
+);
+---
+
+<BaseLayout seo={homepage._seoMetaTags} alternateLinks={alternateLinks}>
+  <div class="wrapper stack-m py-2xl">
+    <h1 class="text-step-3">
+      {homepage.title}
+    </h1>
+
+    <h2 class="text-step-2">Variable Pages</h2>
+    <ul class="stack-xs">
+      {
+        allVariablePages.map((page) => (
+          <li>
+            <a href={getItemPath(page, locale)}>{page.title}</a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <h2 class="text-step-2">Blog Posts</h2>
+    <ul class="stack-xs">
+      {
+        allBlogPosts.map((post) => (
+          <li>
+            <a href={getItemPath(post, locale)}>{post.title}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+
+  <Gallery block={homepage.gallery} />
+</BaseLayout>

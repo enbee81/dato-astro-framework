@@ -1,0 +1,86 @@
+---
+import favicon from "@/assets/svg/favicon.svg";
+
+import "@fontsource-variable/sora";
+import "@/styles/global.css";
+
+import SiteHead from "@/components/SiteHead/SiteHead.astro";
+import SiteFoot from "@/components/SiteFoot/SiteFoot.astro";
+import { getCurrentLocale } from "@/utils/helpers/languageSwitcher.ts";
+
+const preview = process.env.LIVE_PREVIEW === "true";
+
+import { Seo } from "@datocms/astro";
+
+interface AlternateLink {
+  locale: string;
+  url: string;
+}
+
+interface Props {
+  seo?: any[];
+  alternateLinks?: AlternateLink[];
+}
+
+const { seo, alternateLinks } = Astro.props;
+
+// Get current locale from URL
+const currentLocale = getCurrentLocale(Astro.url.pathname);
+---
+
+<!doctype html>
+<html lang={currentLocale}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href={favicon.src} />
+    <meta name="generator" content={Astro.generator} />
+
+    {/* Add alternate language links for SEO */}
+    {
+      alternateLinks && (
+        <>
+          {/* Current page */}
+          <link
+            rel="alternate"
+            hreflang={currentLocale}
+            href={new URL(Astro.url.pathname, Astro.url.origin).href}
+          />
+
+          {/* Alternate language pages */}
+          {alternateLinks.map((link) => (
+            <link
+              rel="alternate"
+              hreflang={link.locale}
+              href={new URL(link.url, Astro.url.origin).href}
+            />
+          ))}
+        </>
+      )
+    }
+
+    {
+      preview ? (
+        <>
+          <title>Preview-Mode | Dato Astro Boilerplate</title>
+          <meta name="robots" content="noindex" />
+        </>
+      ) : seo ? (
+        <Seo data={[...seo]} />
+      ) : (
+        <title>Dato Astro Boilerplate</title>
+      )
+    }
+  </head>
+  <body>
+    <SiteHead alternateLinks={alternateLinks} />
+    <main tabindex="-1">
+      <slot />
+    </main>
+    <SiteFoot />
+  </body>
+</html>
+
+<script>
+  import "@/js/global.js";
+</script>

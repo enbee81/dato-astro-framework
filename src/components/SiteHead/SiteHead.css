@@ -1,0 +1,56 @@
+.logo {
+  width: 9.375rem;
+  height: auto;
+
+  svg {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-toggle {
+  border: 1px solid;
+  background: transparent;
+
+  &[aria-expanded="true"]::after {
+    content: "(open)";
+  }
+
+  &[aria-expanded="false"]::after {
+    content: "(closed)";
+  }
+}
+
+.language-switcher {
+  display: flex;
+  gap: var(--space-xs, 0.5rem);
+  align-items: center;
+}
+
+.lang-link {
+  color: white;
+  text-decoration: none;
+  padding: var(--space-2xs, 0.25rem) var(--space-xs, 0.5rem);
+  border: 1px solid transparent;
+  border-radius: var(--space-3xs, 0.125rem);
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: white;
+    background: rgba(255, 255, 255, 0.1);
+  }
+}
+
+.current-lang {
+  padding: var(--space-2xs, 0.25rem) var(--space-xs, 0.5rem);
+  background: white;
+  color: black;
+  border-radius: var(--space-3xs, 0.125rem);
+  font-weight: bold;
+}
