@@ -1,4 +1,4 @@
-import { IMAGE_CONTENT_QUERY } from "./imageContent";
+import { IMAGE_CONTENT_QUERY } from "../../../utils/dato/queries/imageContent";
 
 export const IMAGE_BLOCK_QUERY = `
   id

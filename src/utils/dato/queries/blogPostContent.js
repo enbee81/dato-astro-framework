@@ -1,5 +1,5 @@
+import { STRUCTURED_TEXT_BLOCK_QUERY } from "@/components/dato/StructuredTextBlock/StructuredTextBlock.query.js";
 import { IMAGE_CONTENT_QUERY } from "./imageContent.js";
-import { STRUCTURED_TEXT_QUERY } from "./structured-text.js";
 
 export const BLOG_POST_CONTENT = `
   __typename
@@ -17,8 +17,6 @@ export const BLOG_POST_CONTENT = `
     ${IMAGE_CONTENT_QUERY}
   }
   content {
-    text {
-      ${STRUCTURED_TEXT_QUERY}
-    }
+    ${STRUCTURED_TEXT_BLOCK_QUERY}
   }
 `;

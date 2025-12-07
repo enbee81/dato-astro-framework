@@ -1,4 +1,4 @@
-import { MODULAR_CONTENT_QUERY } from "./modularContent.js";
+import { MODULAR_CONTENT_QUERY } from "../../../components/dato/ModularContent/modularContent.query.js";
 
 export const VARIABLE_PAGES_QUERY = `
   {

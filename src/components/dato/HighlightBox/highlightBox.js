@@ -1,4 +1,4 @@
-import { LINK_QUERY } from "./link";
+import { LINK_QUERY } from "../../../utils/dato/queries/link";
 
 export const HIGHLIGHT_BOX_QUERY = `
   id

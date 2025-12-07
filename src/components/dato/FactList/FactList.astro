@@ -1,0 +1,40 @@
+---
+import { StructuredText } from "@datocms/astro";
+
+const { block } = Astro.props;
+const List = block.numbered ? "ol" : "ul";
+---
+
+<div class="fact-list | section | full-width text-step-1 stack-m-l | py-2xl">
+  <div class="section-intro | full-width">
+    {
+      block.topline && (
+        <p class="section-intro__topline">
+          <span>{block.topline}</span>
+        </p>
+      )
+    }
+    <h2>{block.headline}</h2>
+  </div>
+
+  <List class="full-width" role="list">
+    {
+      block.facts.map((fact) => (
+        <li class="full-width">
+          <div class="stack-2xs">
+            <h3 class="text-step-4 leading-tight weight-normal">
+              {fact.headline}
+            </h3>
+            <div>
+              <StructuredText data={fact.description} />
+            </div>
+          </div>
+        </li>
+      ))
+    }
+  </List>
+</div>
+
+<style>
+  @import "./FactList.css";
+</style>
