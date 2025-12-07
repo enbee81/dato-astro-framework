@@ -1,0 +1,8 @@
+---
+import { resolveLinkTarget } from "@/utils/helpers/resolveLinkTarget";
+
+const { link } = Astro.props;
+const { href, target, rel } = resolveLinkTarget(link.linktarget);
+---
+
+<a href={href} class="button" target={target} rel={rel}>{link.text}</a>

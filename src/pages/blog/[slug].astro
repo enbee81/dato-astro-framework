@@ -1,0 +1,94 @@
+---
+import DatoPicture from "@/components/dato/DatoPicture/DatoPicture.astro";
+import StructuredTextBlock from "@/components/dato/StructuredTextBlock/StructuredTextBlock.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+import { fetchDatoCMS } from "@/utils/dato";
+import { BLOG_POSTS_QUERY } from "@/utils/dato/queries/blogPosts";
+import { BLOG_POST_QUERY } from "@/utils/dato/queries/blogPost";
+import { QueryListener } from "@datocms/astro/QueryListener";
+
+const preview = process.env.LIVE_PREVIEW === "true";
+
+export async function getStaticPaths() {
+  const { allBlogPosts } = await fetchDatoCMS(BLOG_POSTS_QUERY);
+
+  return allBlogPosts.map((post) => ({
+    params: { slug: post.slug },
+    props: { staticPost: post },
+  }));
+}
+const { staticPost } = Astro.props;
+
+let post;
+
+if (preview) {
+  // In preview mode, fetch the blog post based on the slug from the URL
+  const { blogPost } = await fetchDatoCMS(BLOG_POST_QUERY, {
+    slug: Astro.params["slug"],
+  });
+  if (!blogPost) {
+    return Astro.redirect("/404");
+  }
+  post = blogPost;
+} else {
+  post = staticPost;
+}
+
+const seo = post._seoMetaTags;
+
+function formatDate(dateString: string) {
+  const date = new Date(dateString);
+  return date.toLocaleDateString("en-US", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+}
+---
+
+<BaseLayout seo={seo}>
+  {
+    post.heroImage && (
+      <DatoPicture
+        image={post.heroImage}
+        widths={[800, 1200, 2400]}
+        ratio={5 / 2}
+        sizes="100vw"
+        priority
+        style={`view-transition-name: post-image-${post.id}; view-transition-class: blog-image;`}
+      />
+    )
+  }
+  <div class="wrapper stack-xl py-2xl text-step-0" style="--wrapper-max: 60ch;">
+    <div class="stack-xs">
+      <p>
+        <a href="/blog" class="text-step--1 weight-bold text-dark-pink"
+          >← All Posts</a
+        >
+      </p>
+      {
+        post.date && (
+          <time class="text-step-1" datetime={post.date}>
+            {formatDate(post.date)}
+          </time>
+        )
+      }
+      <h1 class="text-step-4 leading-tight" }>
+        {post.title}
+      </h1>
+    </div>
+    <div>
+      <StructuredTextBlock block={post.content} />
+    </div>
+  </div>
+  {
+    preview && (
+      <QueryListener
+        query={BLOG_POSTS_QUERY}
+        token={import.meta.env.DATOCMS_API_KEY}
+        includeDrafts={true}
+      />
+    )
+  }
+</BaseLayout>

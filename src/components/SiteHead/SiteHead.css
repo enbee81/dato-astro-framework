@@ -1,0 +1,28 @@
+.logo {
+  width: 9.375rem;
+  height: auto;
+
+  svg {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-toggle {
+  border: 1px solid;
+  background: transparent;
+
+  &[aria-expanded="true"]::after {
+    content: "(open)";
+  }
+
+  &[aria-expanded="false"]::after {
+    content: "(closed)";
+  }
+}

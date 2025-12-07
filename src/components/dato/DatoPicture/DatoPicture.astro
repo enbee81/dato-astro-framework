@@ -1,0 +1,122 @@
+---
+/**
+ * Renders a responsive <picture> element for a DatoCMS image using Astro's <Picture> component.
+ *
+ * Props:
+ * - image (object, required): The DatoCMS image object. Must contain `url`, `width`, `height`.
+ * - alt (string, optional): The alternative text for the image. Falls back to image.alt or image.title.
+ * - ratio (number, optional): Override the original aspect ratio. If not provided, original ratio is used.
+ * - pictureClass (string, optional): Adds a CSS class to the outer <picture> element.
+ * - widths (number[], default: [200, 400]): List of responsive image widths. Largest value is used to determine height.
+ * - formats (string[], default: ["webp"]): Output formats to generate (e.g., "webp", "jpeg").
+ * - fit (string, default: "crop"): The DatoCMS image fit mode ("crop", "fill", etc.).
+ * - sizes (string, default: "(min-width: 22em) 30vw, 100vw"): Sizes attribute for responsive behavior.
+ * - emptyAlt (boolean, default: false): If true, forces alt text to be empty (e.g. for decorative images).
+ * - priority (boolean, default: false): If true, marks the image as high-priority (loads eagerly).
+ *
+ * Examples:
+ *
+ * Basic:
+ * <DatoPicture image={myDatoImage} alt="Saskia Michalski" />
+ *
+ * Advanced:
+ * <DatoPicture
+ *   image={myDatoImage}
+ *   ratio={16/9}
+ *   widths={[300, 600, 900]}
+ *   formats={["webp", "jpeg"]}
+ *   fit="crop"
+ *   sizes="(min-width: 600px) 50vw, 100vw"
+ *   emptyAlt
+ *   priority
+ *   pictureClass="gallery-image"
+ * />
+ */
+
+import { Picture } from "astro:assets";
+
+const isPreview = import.meta.env.LIVE_PREVIEW === true;
+
+const {
+  image,
+  alt,
+  ratio,
+  pictureClass,
+  class: className,
+  widths = [200, 400],
+  formats = ["webp"],
+  fit = "crop",
+  sizes = "(min-width: 22em) 30vw, 100vw",
+  emptyAlt = false,
+  priority = false,
+  ...rest
+} = Astro.props;
+
+const imageUrl = image.url;
+
+// Calculate the original image ratio
+const originalRatio = image.width / image.height;
+// Use provided ratio or fall back to original ratio
+const targetRatio = ratio || originalRatio;
+
+// Find the largest width in the widths array
+const largestWidth = Math.max(...widths);
+// Calculate height based on the target ratio
+const targetHeight = Math.round(largestWidth / targetRatio);
+
+// Check if the image is an SVG and formats include "svg"
+let isSvg = false;
+if (image.mimeType == "image/svg+xml" && formats.includes("svg")) {
+  isSvg = true;
+}
+
+// Generate the URL with parameters
+const focalPoint = image.focalPoint || { x: 0.5, y: 0.5 };
+const processedImageUrl = `${imageUrl}?fit=${fit}&fp-x=${focalPoint.x}&fp-y=${focalPoint.y}&w=${largestWidth}&h=${targetHeight}`;
+
+// Determine the alt text
+const altText = emptyAlt ? "" : alt || image.alt || image.title || "";
+
+// Only add class attribute if pictureClass is provided
+const pictureAttributes = pictureClass ? { class: pictureClass } : {};
+
+// Netlify adapter does not support SVG files, so we filter out 'svg' in preview mode
+let formatsToUse;
+if (isPreview) {
+  formatsToUse = ["webp"];
+} else if (isSvg) {
+  formatsToUse = ["svg"];
+} else {
+  formatsToUse = formats;
+}
+---
+
+{
+  isPreview ? (
+    <Picture
+      src={processedImageUrl}
+      alt={altText}
+      width={largestWidth}
+      height={targetHeight}
+      widths={widths}
+      sizes={sizes}
+      formats={formatsToUse}
+      priority={priority}
+      pictureAttributes={rest}
+      class={className}
+    />
+  ) : (
+    <Picture
+      src={isSvg ? image.url : processedImageUrl}
+      alt={altText}
+      width={isSvg ? image.width : largestWidth}
+      height={isSvg ? image.height : targetHeight}
+      widths={isSvg ? undefined : widths}
+      sizes={isSvg ? undefined : sizes}
+      formats={formatsToUse}
+      priority={priority}
+      pictureAttributes={rest}
+      class={className}
+    />
+  )
+}
