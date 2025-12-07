@@ -68,10 +68,7 @@ async function addComponent(componentName) {
   console.log(`✅ Found all required files for ${componentName}`);
 
   // Read the component's query file to get the query name and content
-  const queryFilePath = path.join(
-    componentPath,
-    `${componentName}.query.js`
-  );
+  const queryFilePath = path.join(componentPath, `${componentName}.query.js`);
   const queryFileContent = await fs.readFile(queryFilePath, "utf-8");
 
   // Extract the exported query name (e.g., FACT_LIST_QUERY)
@@ -107,7 +104,7 @@ async function updateModularContentQuery(componentName, queryConstantName) {
     "components",
     "dato",
     "ModularContent",
-    "modularContent.js"
+    "ModularContent.query.js"
   );
 
   const content = await fs.readFile(modularContentPath, "utf-8");
@@ -118,7 +115,7 @@ async function updateModularContentQuery(componentName, queryConstantName) {
   // Check if import already exists
   if (content.includes(importStatement)) {
     console.log(
-      `ℹ️  Import for ${queryConstantName} already exists in modularContent.js`
+      `ℹ️  Import for ${queryConstantName} already exists in ModularContent.query.js`
     );
   } else {
     // Add import after existing imports
@@ -131,7 +128,7 @@ async function updateModularContentQuery(componentName, queryConstantName) {
     const newContent = lines.join("\n");
     await fs.writeFile(modularContentPath, newContent, "utf-8");
     console.log(
-      `✅ Added import for ${queryConstantName} to modularContent.js`
+      `✅ Added import for ${queryConstantName} to ModularContent.query.js`
     );
   }
 
@@ -143,7 +140,7 @@ async function updateModularContentQuery(componentName, queryConstantName) {
 
   if (updatedContent.includes(`... on ${componentName}Record`)) {
     console.log(
-      `ℹ️  Query fragment for ${componentName}Record already exists in modularContent.js`
+      `ℹ️  Query fragment for ${componentName}Record already exists in ModularContent.query.js`
     );
   } else {
     // Find the position to insert the new fragment (before the closing bracket of content)
@@ -154,7 +151,7 @@ async function updateModularContentQuery(componentName, queryConstantName) {
     const newContent = beforeClosing + recordFragment + "\n" + afterClosing;
     await fs.writeFile(modularContentPath, newContent, "utf-8");
     console.log(
-      `✅ Added query fragment for ${componentName}Record to modularContent.js`
+      `✅ Added query fragment for ${componentName}Record to ModularContent.query.js`
     );
   }
 }

@@ -14,7 +14,7 @@ text {
     ... on HighlightBoxRecord {
       ${HIGHLIGHT_BOX_QUERY}
     }
-    ... on ImageRecord {
+    ... on ImageBlockRecord {
       ${IMAGE_BLOCK_QUERY}
     }
   }

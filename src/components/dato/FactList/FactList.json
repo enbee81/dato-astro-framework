@@ -1,0 +1,852 @@
+{
+  "version": "2",
+  "rootItemTypeId": "HDjcpZZyTE6AoYyTpTu_PQ",
+  "entities": [
+    {
+      "id": "CUALLTc0QB6WncuTO8FbiQ",
+      "type": "item_type",
+      "attributes": {
+        "name": "🔗 Link",
+        "singleton": false,
+        "sortable": false,
+        "api_key": "link",
+        "ordering_direction": null,
+        "ordering_meta": null,
+        "tree": false,
+        "modular_block": true,
+        "draft_mode_active": false,
+        "draft_saving_active": false,
+        "all_locales_required": false,
+        "collection_appearance": "table",
+        "has_singleton_item": false,
+        "hint": null,
+        "inverse_relationships_enabled": false
+      },
+      "relationships": {
+        "fields": {
+          "data": [
+            {
+              "id": "Wi8-LKFwRVCRJ9GT5osAQg",
+              "type": "field"
+            },
+            {
+              "id": "U8zqC-JRQV2Wqmzk4xhcew",
+              "type": "field"
+            }
+          ]
+        },
+        "fieldsets": {
+          "data": []
+        },
+        "singleton_item": {
+          "data": null
+        },
+        "ordering_field": {
+          "data": null
+        },
+        "presentation_title_field": {
+          "data": {
+            "id": "Wi8-LKFwRVCRJ9GT5osAQg",
+            "type": "field"
+          }
+        },
+        "presentation_image_field": {
+          "data": null
+        },
+        "title_field": {
+          "data": null
+        },
+        "image_preview_field": {
+          "data": null
+        },
+        "excerpt_field": {
+          "data": null
+        },
+        "workflow": {
+          "data": null
+        }
+      },
+      "meta": {
+        "has_singleton_item": false
+      }
+    },
+    {
+      "id": "Wi8-LKFwRVCRJ9GT5osAQg",
+      "type": "field",
+      "attributes": {
+        "label": "Linktext",
+        "field_type": "string",
+        "api_key": "text",
+        "hint": null,
+        "localized": false,
+        "validators": {
+          "required": {},
+          "length": {
+            "min": 2,
+            "max": 32
+          }
+        },
+        "position": 1,
+        "appearance": {
+          "addons": [],
+          "editor": "single_line",
+          "parameters": {
+            "heading": false,
+            "placeholder": null
+          }
+        },
+        "default_value": null,
+        "deep_filtering_enabled": false
+      },
+      "relationships": {
+        "item_type": {
+          "data": {
+            "id": "CUALLTc0QB6WncuTO8FbiQ",
+            "type": "item_type"
+          }
+        },
+        "fieldset": {
+          "data": null
+        }
+      }
+    },
+    {
+      "id": "U8zqC-JRQV2Wqmzk4xhcew",
+      "type": "field",
+      "attributes": {
+        "label": "Linktarget",
+        "field_type": "single_block",
+        "api_key": "linktarget",
+        "hint": null,
+        "localized": false,
+        "validators": {
+          "single_block_blocks": {
+            "item_types": [
+              "Wtl57mfWQnqUpVPrLhm-dw"
+            ]
+          },
+          "required": {}
+        },
+        "position": 2,
+        "appearance": {
+          "addons": [],
+          "editor": "frameless_single_block",
+          "parameters": {}
+        },
+        "default_value": null,
+        "deep_filtering_enabled": false
+      },
+      "relationships": {
+        "item_type": {
+          "data": {
+            "id": "CUALLTc0QB6WncuTO8FbiQ",
+            "type": "item_type"
+          }
+        },
+        "fieldset": {
+          "data": null
+        }
+      }
+    },
+    {
+      "id": "HDjcpZZyTE6AoYyTpTu_PQ",
+      "type": "item_type",
+      "attributes": {
+        "name": "✊ Fact List",
+        "singleton": false,
+        "sortable": false,
+        "api_key": "fact_list",
+        "ordering_direction": null,
+        "ordering_meta": null,
+        "tree": false,
+        "modular_block": true,
+        "draft_mode_active": false,
+        "draft_saving_active": false,
+        "all_locales_required": false,
+        "collection_appearance": "table",
+        "has_singleton_item": false,
+        "hint": null,
+        "inverse_relationships_enabled": false
+      },
+      "relationships": {
+        "fields": {
+          "data": [
+            {
+              "id": "QWRw2--iRG-kPfeVk3H-Rw",
+              "type": "field"
+            },
+            {
+              "id": "Nr3iHLERQcGgxfwZyOvEbw",
+              "type": "field"
+            },
+            {
+              "id": "d8Zkz5K8R3-Oxb1tpCvRQQ",
+              "type": "field"
+            },
+            {
+              "id": "YNFI0wquRo-5k4F90lXRgw",
+              "type": "field"
+            },
+            {
+              "id": "RLdeiAv3RwmsiXCXFxHR9w",
+              "type": "field"
+            },
+            {
+              "id": "a8EcGZtKSnKiDupvoqe6DQ",
+              "type": "field"
+            }
+          ]
+        },
+        "fieldsets": {
+          "data": []
+        },
+        "singleton_item": {
+          "data": null
+        },
+        "ordering_field": {
+          "data": null
+        },
+        "presentation_title_field": {
+          "data": {
+            "id": "YNFI0wquRo-5k4F90lXRgw",
+            "type": "field"
+          }
+        },
+        "presentation_image_field": {
+          "data": null
+        },
+        "title_field": {
+          "data": null
+        },
+        "image_preview_field": {
+          "data": null
+        },
+        "excerpt_field": {
+          "data": null
+        },
+        "workflow": {
+          "data": null
+        }
+      },
+      "meta": {
+        "has_singleton_item": false
+      }
+    },
+    {
+      "id": "RLdeiAv3RwmsiXCXFxHR9w",
+      "type": "field",
+      "attributes": {
+        "label": "Facts",
+        "field_type": "rich_text",
+        "api_key": "facts",
+        "hint": null,
+        "localized": false,
+        "validators": {
+          "rich_text_blocks": {
+            "item_types": [
+              "PJgchLWlQROCZ_wJGeSfFg"
+            ]
+          },
+          "size": {
+            "min": 2
+          }
+        },
+        "position": 5,
+        "appearance": {
+          "addons": [],
+          "editor": "rich_text",
+          "parameters": {
+            "start_collapsed": true
+          }
+        },
+        "default_value": null,
+        "deep_filtering_enabled": false
+      },
+      "relationships": {
+        "item_type": {
+          "data": {
+            "id": "HDjcpZZyTE6AoYyTpTu_PQ",
+            "type": "item_type"
+          }
+        },
+        "fieldset": {
+          "data": null
+        }
+      }
+    },
+    {
+      "id": "Nr3iHLERQcGgxfwZyOvEbw",
+      "type": "field",
+      "attributes": {
+        "label": "Numbered",
+        "field_type": "boolean",
+        "api_key": "numbered",
+        "hint": null,
+        "localized": false,
+        "validators": {},
+        "position": 2,
+        "appearance": {
+          "addons": [],
+          "editor": "boolean",
+          "parameters": {}
+        },
+        "default_value": true,
+        "deep_filtering_enabled": false
+      },
+      "relationships": {
+        "item_type": {
+          "data": {
+            "id": "HDjcpZZyTE6AoYyTpTu_PQ",
+            "type": "item_type"
+          }
+        },
+        "fieldset": {
+          "data": null
+        }
+      }
+    },
+    {
+      "id": "YNFI0wquRo-5k4F90lXRgw",
+      "type": "field",
+      "attributes": {
+        "label": "Headline",
+        "field_type": "string",
+        "api_key": "headline",
+        "hint": null,
+        "localized": false,
+        "validators": {},
+        "position": 4,
+        "appearance": {
+          "addons": [],
+          "editor": "single_line",
+          "parameters": {
+            "heading": false,
+            "placeholder": null
+          }
+        },
+        "default_value": null,
+        "deep_filtering_enabled": false
+      },
+      "relationships": {
+        "item_type": {
+          "data": {
+            "id": "HDjcpZZyTE6AoYyTpTu_PQ",
+            "type": "item_type"
+          }
+        },
+        "fieldset": {
+          "data": null
+        }
+      }
+    },
+    {
+      "id": "a8EcGZtKSnKiDupvoqe6DQ",
+      "type": "field",
+      "attributes": {
+        "label": "CTA",
+        "field_type": "rich_text",
+        "api_key": "cta",
+        "hint": null,
+        "localized": false,
+        "validators": {
+          "rich_text_blocks": {
+            "item_types": [
+              "CUALLTc0QB6WncuTO8FbiQ"
+            ]
+          },
+          "size": {
+            "max": 2
+          }
+        },
+        "position": 6,
+        "appearance": {
+          "addons": [],
+          "editor": "rich_text",
+          "parameters": {
+            "start_collapsed": true
+          }
+        },
+        "default_value": null,
+        "deep_filtering_enabled": false
+      },
+      "relationships": {
+        "item_type": {
+          "data": {
+            "id": "HDjcpZZyTE6AoYyTpTu_PQ",
+            "type": "item_type"
+          }
+        },
+        "fieldset": {
+          "data": null
+        }
+      }
+    },
+    {
+      "id": "QWRw2--iRG-kPfeVk3H-Rw",
+      "type": "field",
+      "attributes": {
+        "label": "Theme",
+        "field_type": "link",
+        "api_key": "theme",
+        "hint": "When no theme is selected it defaults to \"Light\"",
+        "localized": false,
+        "validators": {
+          "item_item_type": {
+            "on_publish_with_unpublished_references_strategy": "fail",
+            "on_reference_unpublish_strategy": "delete_references",
+            "on_reference_delete_strategy": "delete_references",
+            "item_types": []
+          }
+        },
+        "position": 1,
+        "appearance": {
+          "addons": [],
+          "editor": "link_select",
+          "parameters": {}
+        },
+        "default_value": null,
+        "deep_filtering_enabled": false
+      },
+      "relationships": {
+        "item_type": {
+          "data": {
+            "id": "HDjcpZZyTE6AoYyTpTu_PQ",
+            "type": "item_type"
+          }
+        },
+        "fieldset": {
+          "data": null
+        }
+      }
+    },
+    {
+      "id": "d8Zkz5K8R3-Oxb1tpCvRQQ",
+      "type": "field",
+      "attributes": {
+        "label": "Topline",
+        "field_type": "string",
+        "api_key": "topline",
+        "hint": null,
+        "localized": false,
+        "validators": {},
+        "position": 3,
+        "appearance": {
+          "addons": [],
+          "editor": "single_line",
+          "parameters": {
+            "heading": false,
+            "placeholder": null
+          }
+        },
+        "default_value": null,
+        "deep_filtering_enabled": false
+      },
+      "relationships": {
+        "item_type": {
+          "data": {
+            "id": "HDjcpZZyTE6AoYyTpTu_PQ",
+            "type": "item_type"
+          }
+        },
+        "fieldset": {
+          "data": null
+        }
+      }
+    },
+    {
+      "id": "PJgchLWlQROCZ_wJGeSfFg",
+      "type": "item_type",
+      "attributes": {
+        "name": "✅ Fact",
+        "singleton": false,
+        "sortable": false,
+        "api_key": "fact",
+        "ordering_direction": null,
+        "ordering_meta": null,
+        "tree": false,
+        "modular_block": true,
+        "draft_mode_active": false,
+        "draft_saving_active": false,
+        "all_locales_required": false,
+        "collection_appearance": "table",
+        "has_singleton_item": false,
+        "hint": null,
+        "inverse_relationships_enabled": false
+      },
+      "relationships": {
+        "fields": {
+          "data": [
+            {
+              "id": "DZ4EPNBJRryAyiZ8JFuLZg",
+              "type": "field"
+            },
+            {
+              "id": "Qbx9RGCJSr-3ODE_FARdCQ",
+              "type": "field"
+            }
+          ]
+        },
+        "fieldsets": {
+          "data": []
+        },
+        "singleton_item": {
+          "data": null
+        },
+        "ordering_field": {
+          "data": null
+        },
+        "presentation_title_field": {
+          "data": {
+            "id": "DZ4EPNBJRryAyiZ8JFuLZg",
+            "type": "field"
+          }
+        },
+        "presentation_image_field": {
+          "data": null
+        },
+        "title_field": {
+          "data": null
+        },
+        "image_preview_field": {
+          "data": null
+        },
+        "excerpt_field": {
+          "data": null
+        },
+        "workflow": {
+          "data": null
+        }
+      },
+      "meta": {
+        "has_singleton_item": false
+      }
+    },
+    {
+      "id": "DZ4EPNBJRryAyiZ8JFuLZg",
+      "type": "field",
+      "attributes": {
+        "label": "Headline",
+        "field_type": "string",
+        "api_key": "headline",
+        "hint": null,
+        "localized": false,
+        "validators": {
+          "required": {}
+        },
+        "position": 1,
+        "appearance": {
+          "addons": [],
+          "editor": "single_line",
+          "parameters": {
+            "heading": false,
+            "placeholder": null
+          }
+        },
+        "default_value": null,
+        "deep_filtering_enabled": false
+      },
+      "relationships": {
+        "item_type": {
+          "data": {
+            "id": "PJgchLWlQROCZ_wJGeSfFg",
+            "type": "item_type"
+          }
+        },
+        "fieldset": {
+          "data": null
+        }
+      }
+    },
+    {
+      "id": "Qbx9RGCJSr-3ODE_FARdCQ",
+      "type": "field",
+      "attributes": {
+        "label": "Description",
+        "field_type": "structured_text",
+        "api_key": "description",
+        "hint": null,
+        "localized": false,
+        "validators": {
+          "required": {},
+          "structured_text_blocks": {
+            "item_types": []
+          },
+          "structured_text_inline_blocks": {
+            "item_types": []
+          },
+          "structured_text_links": {
+            "on_publish_with_unpublished_references_strategy": "fail",
+            "on_reference_unpublish_strategy": "delete_references",
+            "on_reference_delete_strategy": "delete_references",
+            "item_types": []
+          }
+        },
+        "position": 2,
+        "appearance": {
+          "addons": [],
+          "editor": "structured_text",
+          "parameters": {
+            "marks": [
+              "strong"
+            ],
+            "nodes": [],
+            "heading_levels": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "blocks_start_collapsed": false,
+            "show_links_meta_editor": false,
+            "show_links_target_blank": true
+          }
+        },
+        "default_value": null,
+        "deep_filtering_enabled": false
+      },
+      "relationships": {
+        "item_type": {
+          "data": {
+            "id": "PJgchLWlQROCZ_wJGeSfFg",
+            "type": "item_type"
+          }
+        },
+        "fieldset": {
+          "data": null
+        }
+      }
+    },
+    {
+      "id": "Wtl57mfWQnqUpVPrLhm-dw",
+      "type": "item_type",
+      "attributes": {
+        "name": "🎯 Linktarget",
+        "singleton": false,
+        "sortable": false,
+        "api_key": "linktarget",
+        "ordering_direction": null,
+        "ordering_meta": null,
+        "tree": false,
+        "modular_block": true,
+        "draft_mode_active": false,
+        "draft_saving_active": false,
+        "all_locales_required": false,
+        "collection_appearance": "table",
+        "has_singleton_item": false,
+        "hint": null,
+        "inverse_relationships_enabled": false
+      },
+      "relationships": {
+        "fields": {
+          "data": [
+            {
+              "id": "KdrVr7vaT_qFrXpV1kc7hw",
+              "type": "field"
+            },
+            {
+              "id": "Z28VbchiR7myGkK909Eocg",
+              "type": "field"
+            },
+            {
+              "id": "dYOcPCILRjyKGZ9w_-NQJw",
+              "type": "field"
+            },
+            {
+              "id": "NH1ISS03SuivSRP0Gll2GA",
+              "type": "field"
+            }
+          ]
+        },
+        "fieldsets": {
+          "data": []
+        },
+        "singleton_item": {
+          "data": null
+        },
+        "ordering_field": {
+          "data": null
+        },
+        "presentation_title_field": {
+          "data": {
+            "id": "dYOcPCILRjyKGZ9w_-NQJw",
+            "type": "field"
+          }
+        },
+        "presentation_image_field": {
+          "data": null
+        },
+        "title_field": {
+          "data": null
+        },
+        "image_preview_field": {
+          "data": null
+        },
+        "excerpt_field": {
+          "data": null
+        },
+        "workflow": {
+          "data": null
+        }
+      },
+      "meta": {
+        "has_singleton_item": false
+      }
+    },
+    {
+      "id": "Z28VbchiR7myGkK909Eocg",
+      "type": "field",
+      "attributes": {
+        "label": "Internal Link",
+        "field_type": "link",
+        "api_key": "internal_link",
+        "hint": null,
+        "localized": false,
+        "validators": {
+          "item_item_type": {
+            "on_publish_with_unpublished_references_strategy": "fail",
+            "on_reference_unpublish_strategy": "delete_references",
+            "on_reference_delete_strategy": "delete_references",
+            "item_types": []
+          }
+        },
+        "position": 2,
+        "appearance": {
+          "addons": [],
+          "editor": "link_select",
+          "parameters": {}
+        },
+        "default_value": null,
+        "deep_filtering_enabled": false
+      },
+      "relationships": {
+        "item_type": {
+          "data": {
+            "id": "Wtl57mfWQnqUpVPrLhm-dw",
+            "type": "item_type"
+          }
+        },
+        "fieldset": {
+          "data": null
+        }
+      }
+    },
+    {
+      "id": "dYOcPCILRjyKGZ9w_-NQJw",
+      "type": "field",
+      "attributes": {
+        "label": "External Link",
+        "field_type": "string",
+        "api_key": "external_link",
+        "hint": null,
+        "localized": false,
+        "validators": {
+          "format": {
+            "custom_pattern": "^(?:https?:\\/\\/(?:[\\w-]+\\.)+[A-Za-z]{2,}(?:\\/\\S*)?|mailto:[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,})$",
+            "description": "Must bei either a valid url or mailto link (e.g. mailto:info@example.com)"
+          }
+        },
+        "position": 3,
+        "appearance": {
+          "addons": [],
+          "editor": "single_line",
+          "parameters": {
+            "heading": false,
+            "placeholder": null
+          }
+        },
+        "default_value": null,
+        "deep_filtering_enabled": false
+      },
+      "relationships": {
+        "item_type": {
+          "data": {
+            "id": "Wtl57mfWQnqUpVPrLhm-dw",
+            "type": "item_type"
+          }
+        },
+        "fieldset": {
+          "data": null
+        }
+      }
+    },
+    {
+      "id": "NH1ISS03SuivSRP0Gll2GA",
+      "type": "field",
+      "attributes": {
+        "label": "Link in einem neuen Fenster öffnen",
+        "field_type": "boolean",
+        "api_key": "new_window",
+        "hint": null,
+        "localized": false,
+        "validators": {},
+        "position": 4,
+        "appearance": {
+          "addons": [],
+          "editor": "boolean",
+          "parameters": {}
+        },
+        "default_value": null,
+        "deep_filtering_enabled": false
+      },
+      "relationships": {
+        "item_type": {
+          "data": {
+            "id": "Wtl57mfWQnqUpVPrLhm-dw",
+            "type": "item_type"
+          }
+        },
+        "fieldset": {
+          "data": null
+        }
+      }
+    },
+    {
+      "id": "KdrVr7vaT_qFrXpV1kc7hw",
+      "type": "field",
+      "attributes": {
+        "label": "Link Type",
+        "field_type": "string",
+        "api_key": "link_type",
+        "hint": null,
+        "localized": false,
+        "validators": {
+          "required": {}
+        },
+        "position": 1,
+        "appearance": {
+          "addons": [],
+          "editor": "string_select",
+          "parameters": {
+            "options": [
+              {
+                "hint": "",
+                "label": "Internal Link",
+                "value": "internal"
+              },
+              {
+                "hint": "",
+                "label": "External Link",
+                "value": "external"
+              }
+            ]
+          }
+        },
+        "default_value": "internal",
+        "deep_filtering_enabled": false
+      },
+      "relationships": {
+        "item_type": {
+          "data": {
+            "id": "Wtl57mfWQnqUpVPrLhm-dw",
+            "type": "item_type"
+          }
+        },
+        "fieldset": {
+          "data": null
+        }
+      }
+    }
+  ]
+}

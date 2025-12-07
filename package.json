@@ -7,7 +7,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "add-component": "node scripts/add-component.js"
+    "add-component": "node scripts/add-component.js",
+    "new-component": "node scripts/new-component.js"
   },
   "dependencies": {
     "@astrojs/netlify": "^6.6.2",
