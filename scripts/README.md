@@ -15,9 +15,10 @@ npm run new-component <ComponentName>
 **What it does:**
 
 - Creates a new folder in `src/components/dato/<ComponentName>/`
-- Creates three empty files: `ComponentName.astro`, `ComponentName.css`, `ComponentName.query.js`
+- Creates three template files: `ComponentName.astro`, `ComponentName.css`, `ComponentName.query.js`
 - Validates component naming (must start with uppercase)
 - Prevents overwriting existing components
+- **Interactive prompt**: Asks if you want to add the component to modular content immediately
 
 ### 2. Add Component to Modular Content (`add-component.js`)
 
@@ -59,23 +60,27 @@ The script will:
 
 ## Typical Workflow
 
-1. **Create a new component:**
+### Option 1: Interactive (Recommended)
 
+1. **Create a new component:**
    ```bash
    npm run new-component MyNewComponent
    ```
+2. **Answer "y" when prompted** to automatically add it to modular content
+3. **Done!** Your component is ready to use
 
-2. **Add content to the component files:**
-   - Edit `MyNewComponent.astro` - Add your Astro component markup
-   - Edit `MyNewComponent.css` - Add component styles
-   - Edit `MyNewComponent.query.js` - Add GraphQL query with exported constant
+### Option 2: Manual
 
-3. **Integrate into modular content:**
+1. **Create a new component:**
    ```bash
-   npm run add-component MyNewComponent
+   npm run new-component MyNewComponent
    ```
-
-## Error Handling
+2. **Answer "n" when prompted** (or customize the template files first)
+3. **Manually add to modular content later:**
+   ````bash
+   npm run add-component MyNewComponent
+   ```## Error Handling
+   ````
 
 ### new-component script:
 

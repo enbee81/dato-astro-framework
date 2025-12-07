@@ -3,10 +3,77 @@
 import fs from "fs/promises";
 import path from "path";
 import { fileURLToPath } from "url";
+import { spawn } from "child_process";
+import readline from "readline";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const projectRoot = path.resolve(__dirname, "..");
+
+async function promptAddToModularContent(componentName) {
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+  });
+
+  return new Promise((resolve) => {
+    rl.question(
+      "\n❓ Do you want to add this component to modular content? (y/N): ",
+      async (answer) => {
+        rl.close();
+
+        if (answer.toLowerCase() === "y" || answer.toLowerCase() === "yes") {
+          console.log(`\n🔄 Adding ${componentName} to modular content...`);
+
+          try {
+            // Run the add-component script
+            const addComponentProcess = spawn(
+              "npm",
+              ["run", "add-component", componentName],
+              {
+                stdio: "inherit",
+                cwd: projectRoot,
+              }
+            );
+
+            addComponentProcess.on("close", (code) => {
+              if (code === 0) {
+                console.log(
+                  `\n✅ ${componentName} has been successfully added to modular content!`
+                );
+              } else {
+                console.log(
+                  `\n❌ Failed to add ${componentName} to modular content. You can run 'npm run add-component ${componentName}' manually.`
+                );
+              }
+              resolve();
+            });
+
+            addComponentProcess.on("error", (error) => {
+              console.error(`❌ Error running add-component: ${error.message}`);
+              console.log(
+                `💡 You can run 'npm run add-component ${componentName}' manually.`
+              );
+              resolve();
+            });
+          } catch (error) {
+            console.error(`❌ Error: ${error.message}`);
+            console.log(
+              `💡 You can run 'npm run add-component ${componentName}' manually.`
+            );
+            resolve();
+          }
+        } else {
+          console.log(
+            `\n💡 You can add ${componentName} to modular content later by running:`
+          );
+          console.log(`   npm run add-component ${componentName}`);
+          resolve();
+        }
+      }
+    );
+  });
+}
 
 async function createNewComponent(componentName) {
   if (!componentName) {
@@ -109,12 +176,10 @@ const { block } = Astro.props;
   }
 
   console.log(`\n🎉 Successfully created ${componentName} component!`);
-  console.log(`\nNext steps:`);
-  console.log(`1. Add content to the component files`);
-  console.log(
-    `2. Run 'npm run add-component ${componentName}' to integrate it into modular content`
-  );
   console.log(`\nComponent location: src/components/dato/${componentName}/`);
+
+  // Ask if user wants to add to modular content
+  await promptAddToModularContent(componentName);
 }
 
 // Get component name from command line arguments

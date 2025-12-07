@@ -1,0 +1,212 @@
+{
+  "version": "2",
+  "rootItemTypeId": "cdmRakdzRMaaIgMR2ehPBw",
+  "entities": [
+    {
+      "id": "cdmRakdzRMaaIgMR2ehPBw",
+      "type": "item_type",
+      "attributes": {
+        "name": "🧱 Logo Wall",
+        "singleton": false,
+        "sortable": false,
+        "api_key": "logo_wall",
+        "ordering_direction": null,
+        "ordering_meta": null,
+        "tree": false,
+        "modular_block": true,
+        "draft_mode_active": false,
+        "draft_saving_active": false,
+        "all_locales_required": false,
+        "collection_appearance": "table",
+        "has_singleton_item": false,
+        "hint": null,
+        "inverse_relationships_enabled": false
+      },
+      "relationships": {
+        "fields": {
+          "data": [
+            {
+              "id": "eGv1S8c8QfiCgOLCjrAFKg",
+              "type": "field"
+            },
+            {
+              "id": "I-i5MHAISieBQGeyjGu29w",
+              "type": "field"
+            },
+            {
+              "id": "EyUbElSnTtesv8bMhTvzjw",
+              "type": "field"
+            }
+          ]
+        },
+        "fieldsets": {
+          "data": []
+        },
+        "singleton_item": {
+          "data": null
+        },
+        "ordering_field": {
+          "data": null
+        },
+        "presentation_title_field": {
+          "data": {
+            "id": "eGv1S8c8QfiCgOLCjrAFKg",
+            "type": "field"
+          }
+        },
+        "presentation_image_field": {
+          "data": null
+        },
+        "title_field": {
+          "data": null
+        },
+        "image_preview_field": {
+          "data": null
+        },
+        "excerpt_field": {
+          "data": null
+        },
+        "workflow": {
+          "data": null
+        }
+      },
+      "meta": {
+        "has_singleton_item": false
+      }
+    },
+    {
+      "id": "I-i5MHAISieBQGeyjGu29w",
+      "type": "field",
+      "attributes": {
+        "label": "Description",
+        "field_type": "structured_text",
+        "api_key": "description",
+        "hint": null,
+        "localized": false,
+        "validators": {
+          "structured_text_blocks": {
+            "item_types": []
+          },
+          "structured_text_inline_blocks": {
+            "item_types": []
+          },
+          "structured_text_links": {
+            "on_publish_with_unpublished_references_strategy": "fail",
+            "on_reference_unpublish_strategy": "delete_references",
+            "on_reference_delete_strategy": "delete_references",
+            "item_types": []
+          }
+        },
+        "position": 2,
+        "appearance": {
+          "addons": [],
+          "editor": "structured_text",
+          "parameters": {
+            "marks": [
+              "strong"
+            ],
+            "nodes": [],
+            "heading_levels": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "blocks_start_collapsed": false,
+            "show_links_meta_editor": false,
+            "show_links_target_blank": true
+          }
+        },
+        "default_value": null,
+        "deep_filtering_enabled": false
+      },
+      "relationships": {
+        "item_type": {
+          "data": {
+            "id": "cdmRakdzRMaaIgMR2ehPBw",
+            "type": "item_type"
+          }
+        },
+        "fieldset": {
+          "data": null
+        }
+      }
+    },
+    {
+      "id": "eGv1S8c8QfiCgOLCjrAFKg",
+      "type": "field",
+      "attributes": {
+        "label": "Headline",
+        "field_type": "string",
+        "api_key": "headline",
+        "hint": null,
+        "localized": false,
+        "validators": {},
+        "position": 1,
+        "appearance": {
+          "addons": [],
+          "editor": "single_line",
+          "parameters": {
+            "heading": false,
+            "placeholder": null
+          }
+        },
+        "default_value": null,
+        "deep_filtering_enabled": false
+      },
+      "relationships": {
+        "item_type": {
+          "data": {
+            "id": "cdmRakdzRMaaIgMR2ehPBw",
+            "type": "item_type"
+          }
+        },
+        "fieldset": {
+          "data": null
+        }
+      }
+    },
+    {
+      "id": "EyUbElSnTtesv8bMhTvzjw",
+      "type": "field",
+      "attributes": {
+        "label": "Logos",
+        "field_type": "gallery",
+        "api_key": "logos",
+        "hint": null,
+        "localized": false,
+        "validators": {
+          "file_size": {
+            "max_value": 1,
+            "max_unit": "MB"
+          },
+          "extension": {
+            "extensions": [],
+            "predefined_list": "image"
+          }
+        },
+        "position": 3,
+        "appearance": {
+          "addons": [],
+          "editor": "gallery",
+          "parameters": {}
+        },
+        "default_value": null,
+        "deep_filtering_enabled": false
+      },
+      "relationships": {
+        "item_type": {
+          "data": {
+            "id": "cdmRakdzRMaaIgMR2ehPBw",
+            "type": "item_type"
+          }
+        },
+        "fieldset": {
+          "data": null
+        }
+      }
+    }
+  ]
+}

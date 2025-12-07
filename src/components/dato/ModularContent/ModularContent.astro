@@ -4,6 +4,8 @@ const { content } = Astro.props;
 import StructuredTextBlock from "@/components/dato/StructuredTextBlock/StructuredTextBlock.astro";
 import Gallery from "@/components/dato/Gallery/Gallery.astro";
 import FactList from "../FactList/FactList.astro";
+import TestBlock from "../TestBlock/TestBlock.astro";
+import LogoWall from "../LogoWall/LogoWall.astro";
 ---
 
 {
@@ -17,6 +19,10 @@ import FactList from "../FactList/FactList.astro";
         return <StructuredTextBlock {block} />;
       case "FactList":
         return <FactList {block} />;
+      case "TestBlock":
+        return <TestBlock {block} />;
+      case "LogoWall":
+        return <LogoWall {block} />;
       default:
         return <p>Unknown block: {block.__typename}</p>;
     }
