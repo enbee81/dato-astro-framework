@@ -6,6 +6,8 @@ import Gallery from "@/components/dato/Gallery/Gallery.astro";
 import FactList from "../FactList/FactList.astro";
 import TestBlock from "../TestBlock/TestBlock.astro";
 import LogoWall from "../LogoWall/LogoWall.astro";
+import AccordionList from "../AccordionList/AccordionList.astro";
+import TeaserList from "../TeaserList/TeaserList.astro";
 ---
 
 {
@@ -17,12 +19,14 @@ import LogoWall from "../LogoWall/LogoWall.astro";
         return <Gallery {block} />;
       case "StructuredText":
         return <StructuredTextBlock {block} />;
-      case "FactList":
-        return <FactList {block} />;
       case "TestBlock":
         return <TestBlock {block} />;
       case "LogoWall":
         return <LogoWall {block} />;
+      case "AccordionList":
+        return <AccordionList {block} />;
+      case "FactList":
+        return <FactList {block} />;
       default:
         return <p>Unknown block: {block.__typename}</p>;
     }

@@ -1,0 +1,277 @@
+{
+  "version": "2",
+  "rootItemTypeId": "OSAGlydVS-KhhVd4BDb2vg",
+  "entities": [
+    {
+      "id": "OSAGlydVS-KhhVd4BDb2vg",
+      "type": "item_type",
+      "attributes": {
+        "name": "🪗 Accordion-List",
+        "singleton": false,
+        "sortable": false,
+        "api_key": "accordion_list",
+        "ordering_direction": null,
+        "ordering_meta": null,
+        "tree": false,
+        "modular_block": true,
+        "draft_mode_active": false,
+        "draft_saving_active": false,
+        "all_locales_required": false,
+        "collection_appearance": "table",
+        "has_singleton_item": false,
+        "hint": null,
+        "inverse_relationships_enabled": false
+      },
+      "relationships": {
+        "fields": {
+          "data": [
+            {
+              "id": "axRnjxTnTxKS3KA_Oiq_IA",
+              "type": "field"
+            }
+          ]
+        },
+        "fieldsets": {
+          "data": []
+        },
+        "singleton_item": {
+          "data": null
+        },
+        "ordering_field": {
+          "data": null
+        },
+        "presentation_title_field": {
+          "data": null
+        },
+        "presentation_image_field": {
+          "data": null
+        },
+        "title_field": {
+          "data": null
+        },
+        "image_preview_field": {
+          "data": null
+        },
+        "excerpt_field": {
+          "data": null
+        },
+        "workflow": {
+          "data": null
+        }
+      },
+      "meta": {
+        "has_singleton_item": false
+      }
+    },
+    {
+      "id": "axRnjxTnTxKS3KA_Oiq_IA",
+      "type": "field",
+      "attributes": {
+        "label": "Accordion List",
+        "field_type": "rich_text",
+        "api_key": "accordion_list",
+        "hint": null,
+        "localized": false,
+        "validators": {
+          "rich_text_blocks": {
+            "item_types": [
+              "UkLwiWqITl--GoGHZ2jSBw"
+            ]
+          },
+          "size": {
+            "min": 2
+          }
+        },
+        "position": 1,
+        "appearance": {
+          "addons": [],
+          "editor": "rich_text",
+          "parameters": {
+            "start_collapsed": true
+          }
+        },
+        "default_value": null,
+        "deep_filtering_enabled": false
+      },
+      "relationships": {
+        "item_type": {
+          "data": {
+            "id": "OSAGlydVS-KhhVd4BDb2vg",
+            "type": "item_type"
+          }
+        },
+        "fieldset": {
+          "data": null
+        }
+      }
+    },
+    {
+      "id": "UkLwiWqITl--GoGHZ2jSBw",
+      "type": "item_type",
+      "attributes": {
+        "name": "🎵 Accordion Item",
+        "singleton": false,
+        "sortable": false,
+        "api_key": "accordion_item",
+        "ordering_direction": null,
+        "ordering_meta": null,
+        "tree": false,
+        "modular_block": true,
+        "draft_mode_active": false,
+        "draft_saving_active": false,
+        "all_locales_required": false,
+        "collection_appearance": "table",
+        "has_singleton_item": false,
+        "hint": null,
+        "inverse_relationships_enabled": false
+      },
+      "relationships": {
+        "fields": {
+          "data": [
+            {
+              "id": "GTf5u-0QQtWMK-ITeGFxFQ",
+              "type": "field"
+            },
+            {
+              "id": "UZc_oBYcSamlALy3XGIo_w",
+              "type": "field"
+            }
+          ]
+        },
+        "fieldsets": {
+          "data": []
+        },
+        "singleton_item": {
+          "data": null
+        },
+        "ordering_field": {
+          "data": null
+        },
+        "presentation_title_field": {
+          "data": {
+            "id": "GTf5u-0QQtWMK-ITeGFxFQ",
+            "type": "field"
+          }
+        },
+        "presentation_image_field": {
+          "data": null
+        },
+        "title_field": {
+          "data": null
+        },
+        "image_preview_field": {
+          "data": null
+        },
+        "excerpt_field": {
+          "data": null
+        },
+        "workflow": {
+          "data": null
+        }
+      },
+      "meta": {
+        "has_singleton_item": false
+      }
+    },
+    {
+      "id": "UZc_oBYcSamlALy3XGIo_w",
+      "type": "field",
+      "attributes": {
+        "label": "Description",
+        "field_type": "structured_text",
+        "api_key": "description",
+        "hint": null,
+        "localized": false,
+        "validators": {
+          "required": {},
+          "length": {
+            "min": 10
+          },
+          "structured_text_blocks": {
+            "item_types": []
+          },
+          "structured_text_inline_blocks": {
+            "item_types": []
+          },
+          "structured_text_links": {
+            "on_publish_with_unpublished_references_strategy": "fail",
+            "on_reference_unpublish_strategy": "delete_references",
+            "on_reference_delete_strategy": "delete_references",
+            "item_types": []
+          }
+        },
+        "position": 2,
+        "appearance": {
+          "addons": [],
+          "editor": "structured_text",
+          "parameters": {
+            "marks": [
+              "strong"
+            ],
+            "nodes": [],
+            "heading_levels": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "blocks_start_collapsed": false,
+            "show_links_meta_editor": false,
+            "show_links_target_blank": true
+          }
+        },
+        "default_value": null,
+        "deep_filtering_enabled": false
+      },
+      "relationships": {
+        "item_type": {
+          "data": {
+            "id": "UkLwiWqITl--GoGHZ2jSBw",
+            "type": "item_type"
+          }
+        },
+        "fieldset": {
+          "data": null
+        }
+      }
+    },
+    {
+      "id": "GTf5u-0QQtWMK-ITeGFxFQ",
+      "type": "field",
+      "attributes": {
+        "label": "Headline",
+        "field_type": "string",
+        "api_key": "headline",
+        "hint": null,
+        "localized": false,
+        "validators": {
+          "required": {}
+        },
+        "position": 1,
+        "appearance": {
+          "addons": [],
+          "editor": "single_line",
+          "parameters": {
+            "heading": false,
+            "placeholder": null
+          }
+        },
+        "default_value": null,
+        "deep_filtering_enabled": false
+      },
+      "relationships": {
+        "item_type": {
+          "data": {
+            "id": "UkLwiWqITl--GoGHZ2jSBw",
+            "type": "item_type"
+          }
+        },
+        "fieldset": {
+          "data": null
+        }
+      }
+    }
+  ]
+}
